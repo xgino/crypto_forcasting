@@ -1,0 +1,22 @@
+data:
+  path: "data/raw/btcusd_1-min_data.csv"
+  target_col: "future_return"
+  shift_minutes: 0
+
+features:
+  - moving_averages
+  - rsi
+  - macd
+
+models:
+  - LSTM
+
+model_params:
+  LSTM:
+    lookback: 30
+    hidden_units: 64
+    epochs: 10
+
+# Train: first 3 years, Validate: next 1 year
+train_end: "2016-12-31"
+val_end: "2017-12-31"
